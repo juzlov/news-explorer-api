@@ -32,7 +32,7 @@ const articleSchema = new mongoose.Schema({
       return validator.isURL(image);
     },
   },
-  //Нужно задать поведение по умолчанию, чтобы база данных не возвращала это поле.
+  // Нужно задать поведение по умолчанию, чтобы база данных не возвращала это поле.
   owner: {
     type: String,
     required: true,

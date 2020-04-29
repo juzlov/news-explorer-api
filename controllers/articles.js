@@ -16,8 +16,13 @@ module.exports.getArticles = (req, res, next) => {
 };
 
 module.exports.postArticle = (req, res, next) => {
-  const { keyword, title, text, date, source, link, image } = req.body;
-  Article.create({ keyword, title, text, date, source, link, image })
+  const {
+    keyword, title, text, date, source, link, image,
+  } = req.body;
+
+  Article.create({
+    keyword, title, text, date, source, link, image,
+  })
     .then((article) => res.status(200).send({ data: article }))
     .catch(next);
 };
