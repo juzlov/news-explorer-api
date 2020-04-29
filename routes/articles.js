@@ -3,8 +3,8 @@ const validator = require('validator');
 const { celebrate, Joi } = require('celebrate');
 const { getArticles, postArticle, removeArticle } = require('../controllers/articles');
 
-router.get('/articles', getArticles);
-router.post('/articles', celebrate({
+router.get('/', getArticles);
+router.post('/', celebrate({
   body: Joi.object().keys({
     keyword: Joi.string().required(),
     title: Joi.string().required(),
@@ -27,6 +27,6 @@ router.post('/articles', celebrate({
   }),
 }), postArticle);
 
-router.delete('/articles/articleId', removeArticle);
+router.delete('/:articleId', removeArticle);
 
 module.exports = router;

@@ -9,7 +9,7 @@ const Unauthorized = require('../errors/Unauthorized');
 
 
 module.exports.getUser = (req, res, next) => {
-  User.find({})
+  User.findOne(req.params.email)
     .then((me) => {
       if (!me) {
         throw new NotFoundError('User identification error');
