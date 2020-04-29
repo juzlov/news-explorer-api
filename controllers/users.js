@@ -19,20 +19,18 @@ module.exports.getUser = (req, res, next) => {
     .catch(next);
 };
 
-//не менял дальше
-
 module.exports.addUser = (req, res, next) => {
   const {
-    name, about, avatar, email, password,
+    name, email, password,
   } = req.body;
   const unauthorized = new Unauthorized('');
 
   bcrypt.hash(password, 10)
     .then((hash) => User.create({
-      name, about, email, password: hash, avatar,
+      name, email, password: hash,
     }))
     .then((user) => res.send({
-      name: user.name, about: user.about, email: user.email, avatar: user.avatar,
+      name: user.name, email: user.email,
     }))
     .catch((err) => {
       if (err.code === 11000 && err.name === 'MongoError') {
