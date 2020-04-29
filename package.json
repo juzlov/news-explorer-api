@@ -1,0 +1,21 @@
+{
+  "name": "news-explorer-api",
+  "version": "0.0.1",
+  "description": "Developed API for News Explorer project",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js",
+    "dev": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/juzlov/news-explorer-api.git"
+  },
+  "author": "Ignat Anashin",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/juzlov/news-explorer-api/issues"
+  },
+  "homepage": "https://github.com/juzlov/news-explorer-api#readme"
+}
