@@ -3,8 +3,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
-const { celebrate, Joi } = require('celebrate');
-const { errors } = require('celebrate');
+const { celebrate, Joi, errors } = require('celebrate');
 const users = require('./routes/users');
 const articles = require('./routes/articles');
 const { login, addUser } = require('./controllers/users');
@@ -13,8 +12,9 @@ const { requestLogger, errorLogger } = require('./middlewares/logger');
 const router = require('./middlewares/PageNotFound');
 
 const { PORT = 3000 } = process.env;
-
 const app = express();
+
+// Нужно реализовать: В production-режиме адрес базы данных берётся из process.env 5.3
 
 mongoose.connect('mongodb://localhost:27017/newsdb', {
   useNewUrlParser: true,
