@@ -94,4 +94,4 @@ Data.json: {}
 84.201.179.249
 
 ## Domain
-https://api.mesto-project.tk/
+https://api.news-explore.tk/
