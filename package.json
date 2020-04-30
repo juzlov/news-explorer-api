@@ -1,6 +1,6 @@
 {
   "name": "news-explorer-api",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "Developed API for News Explorer project",
   "main": "app.js",
   "scripts": {
