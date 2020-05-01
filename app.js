@@ -29,12 +29,6 @@ app.use(cookieParser());
 
 app.use(requestLogger);
 
-app.get('/crash-test', () => {
-  setTimeout(() => {
-    throw new Error('The server is about to crash');
-  }, 0);
-});
-
 app.post('/signin', celebrate({
   body: Joi.object().keys({
     email: Joi.string().required(),

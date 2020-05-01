@@ -1,7 +1,6 @@
 const Article = require('../models/article');
 const NotFoundError = require('../errors/NotFoundError');
 const Forbidden = require('../errors/Forbidden');
-const ReqError = require('../errors/ReqError');
 
 module.exports.getArticles = (req, res, next) => {
   Article.find({})
@@ -30,9 +29,8 @@ module.exports.postArticle = (req, res, next) => {
 module.exports.removeArticle = (req, res, next) => {
   Article.findById(req.params.articleId)
     .then((article) => {
-      console.log(article);
       if (!article) {
-        throw new ReqError('no article with this id');
+        throw new NotFoundError('no article with this id');
       }
       if (!(article.owner === req.user._id)) {
         throw new Forbidden('you can delete only yours articles');

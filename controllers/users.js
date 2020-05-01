@@ -5,8 +5,7 @@ const { NODE_ENV, JWT_SECRET } = process.env;
 const jwt = require('jsonwebtoken');
 const User = require('../models/user');
 const NotFoundError = require('../errors/NotFoundError');
-const Unauthorized = require('../errors/Unauthorized');
-
+const ConflictReq = require('../errors/ConflictReq');
 
 module.exports.getUser = (req, res, next) => {
   User.findOne(req.params.email)
@@ -23,7 +22,6 @@ module.exports.addUser = (req, res, next) => {
   const {
     name, email, password,
   } = req.body;
-  const unauthorized = new Unauthorized('');
 
   bcrypt.hash(password, 10)
     .then((hash) => User.create({
@@ -34,7 +32,7 @@ module.exports.addUser = (req, res, next) => {
     }))
     .catch((err) => {
       if (err.code === 11000 && err.name === 'MongoError') {
-        res.status(unauthorized.statusCode).send({ message: 'Email already registred' });
+        throw new ConflictReq('Email already registred');
       }
     })
     .catch(next);
