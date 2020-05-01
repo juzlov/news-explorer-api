@@ -30,6 +30,7 @@ module.exports.postArticle = (req, res, next) => {
 module.exports.removeArticle = (req, res, next) => {
   Article.findById(req.params.articleId)
     .then((article) => {
+      console.log(article);
       if (!article) {
         throw new ReqError('no article with this id');
       }

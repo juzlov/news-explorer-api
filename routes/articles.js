@@ -11,7 +11,7 @@ router.post('/', celebrate({
     text: Joi.string().required(),
     date: Joi.string().required(),
     source: Joi.string().required(),
-    // eslint-disable-next-line no-useless-escape
+
     link: Joi.string().required().custom((value, helpers) => {
       if (validator.isURL(value)) {
         return value;
@@ -27,6 +27,10 @@ router.post('/', celebrate({
   }),
 }), postArticle);
 
-router.delete('/:articleId', removeArticle);
+router.delete('/:articleId', celebrate({
+  params: Joi.object().keys({
+    articleId: Joi.string().regex(/^[0-9a-fA-F]{24}$/),
+  }),
+}), removeArticle);
 
 module.exports = router;

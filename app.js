@@ -10,6 +10,7 @@ const { login, addUser } = require('./controllers/users');
 const auth = require('./middlewares/auth');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 const router = require('./middlewares/PageNotFound');
+const errorHandler = require('./middlewares/errorHandler');
 
 const { PORT = 3000, DB_PATH, NODE_ENV } = process.env;
 const app = express();
@@ -44,7 +45,6 @@ app.post('/signin', celebrate({
 app.post('/signup', celebrate({
   body: Joi.object().keys({
     name: Joi.string().required().min(2).max(30),
-    // eslint-disable-next-line no-useless-escape
     email: Joi.string().required().email({ minDomainSegments: 2 }),
     password: Joi.string().required().min(6),
   }),
@@ -58,14 +58,6 @@ app.use(router);
 
 app.use(errors());
 
-// eslint-disable-next-line no-unused-vars
-app.use((err, req, res, next) => {
-  const { statusCode = 500, message } = err;
-  const text = (`An error occurred: ${message}`);
-  res.status(statusCode).send({ message: text });
-});
+app.use(errorHandler);
 
-app.listen(PORT, () => {
-  // eslint-disable-next-line no-console
-  console.log(`Server started at ${PORT}`);
-});
+app.listen(PORT);

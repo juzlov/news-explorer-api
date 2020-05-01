@@ -4,7 +4,6 @@
   "description": "Developed API for News Explorer project",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node app.js",
     "dev": "nodemon app.js"
   },
@@ -28,7 +27,8 @@
     "express-winston": "^4.0.3",
     "helmet": "^3.22.0",
     "jsonwebtoken": "^8.5.1",
-    "mongoose": "^5.9.10",
+    "mongoose": "^5.9.11",
+    "nodemon": "^2.0.3",
     "validator": "^13.0.0",
     "winston": "^3.2.1"
   },
