@@ -1,8 +1,8 @@
 const router = require('express').Router();
+const NotFoundError = require('../errors/NotFoundError');
 
-router.all('*', (req, res, next) => {
-  res.status(404).send({ message: 'Page not found' });
-  next();
+router.all('*', () => {
+  throw new NotFoundError('Page not found');
 });
 
 module.exports = router;
