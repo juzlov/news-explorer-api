@@ -11,6 +11,7 @@ const auth = require('./middlewares/auth');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 const router = require('./middlewares/PageNotFound');
 const errorHandler = require('./middlewares/errorHandler');
+const cors = require('cors');
 
 const { PORT = 3000, DB_PATH, NODE_ENV } = process.env;
 const app = express();
@@ -26,6 +27,7 @@ app.use(helmet());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
+app.use(cors());
 
 app.use(requestLogger);
 
