@@ -24,6 +24,7 @@ router.post('/', celebrate({
       }
       return helpers.message('Invalid image link');
     }),
+    _id: Joi.string().required(),
   }),
 }), postArticle);
 
