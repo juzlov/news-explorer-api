@@ -4,7 +4,6 @@ const Forbidden = require('../errors/Forbidden');
 
 module.exports.getArticles = (req, res, next) => {
   Article.find({})
-    .populate('owner')
     .then((articles) => {
       if (!articles) {
         throw new NotFoundError('No articles were found');
