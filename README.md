@@ -6,7 +6,7 @@ Version 1.0.1
 
 ## About
 
-This project is an independent server that will be linked to the News Explorer frontend part. 
+This project is an independent server linked to the [News Explorer frontend part](https://github.com/juzlov/news-explorer-frontend)
 The server verifies the token, authorizes the user, saves and returns articles from the database.
 
 - Project API developed following REST principles
